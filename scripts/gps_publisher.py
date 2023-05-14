@@ -91,8 +91,7 @@ def talker():
                 header_msg.stamp = rospy.get_rostime()
                 header_msg.seq += 1
                 gps_msg.header = header_msg
-
-               
+              
 
                 rospy.loginfo(f"header timestamp: {header_msg.stamp.secs}")
 
