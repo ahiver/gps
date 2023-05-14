@@ -87,6 +87,8 @@ def talker():
                 # secs = hh * 3600 + mm * 60 + ss
                 # header_msg.stamp.secs = int(secs)
                 # header_msg.stamp.nsecs = int(secs * 1000000)
+
+                header_msg.stamp = rospy.get_rostime()
                 header_msg.seq += 1
                 gps_msg.header = header_msg
 
