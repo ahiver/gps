@@ -5,6 +5,7 @@ from std_msgs.msg import Header
 import serial
 from gps.msg import gps
 import utm
+import os
 
 # pip3 install pyserial 
 # pip3 install utm
@@ -14,8 +15,9 @@ def talker():
     pub = rospy.Publisher('gps_data', gps, queue_size=10)
     rospy.init_node('gps_publisher', anonymous=True)
 
-    serial_port = rospy.get_param('~port','/dev/ttyUSB3') 
-    serial_baud = rospy.get_param('~baudrate',4800) 
+
+    serial_port = rospy.get_param('~port',os.getenv('GPS_DEVICE')) 
+    serial_baud = rospy.get_param('~baudrate',os.getenv('GPS_BAUD_RATE')) 
 
     port = serial.Serial(serial_port, serial_baud, timeout=3.) 
     
