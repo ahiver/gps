@@ -13,7 +13,7 @@ import os
 # rosrun gps gps_publisher.py
 
 def talker():
-    pub = rospy.Publisher('gps_data', gps, queue_size=10)
+    pub = rospy.Publisher('gps_data', NavSatFix, queue_size=10)
     rospy.init_node('gps_publisher', anonymous=True)
 
 
