@@ -46,7 +46,7 @@ def talker():
             line = line.replace(GPS_POSITION_PREFIX, '');
             rospy.loginfo(line)
                 
-            gps_msg.raw_data = line
+            # gps_msg.raw_data = line
             data = line.split(',')
             print(data)
             # Data Format:
