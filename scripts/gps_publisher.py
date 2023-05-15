@@ -4,6 +4,7 @@ import rospy
 from std_msgs.msg import Header
 import serial
 from gps.msg import gps
+from sensor_msgs import NavSatFix
 import utm
 import os
 
@@ -29,7 +30,7 @@ def talker():
 
     # port.write("AT+CGPSINFO")
 
-    gps_msg = gps()
+    gps_msg = NavSatFix()
 
     r = rospy.Rate(10) # 10hz
     GPS_POSITION_PREFIX="+CGPSINFO: "
@@ -69,16 +70,16 @@ def talker():
             
                 # Latitude (DDmm.mm) (N = North, S = South)
                 if lat_dir == 'N':
-                    gps_msg.lat = float(lat[:2]) + float(lat[2:])/60
+                    gps_msg.latitude = float(lat[:2]) + float(lat[2:])/60
                     print(gps_msg.lat)
                 elif lat_dir == 'S':
-                    gps_msg.lat = -1 * (float(lat[:2]) + float(lat[2:])/60)
+                    gps_msg.latitude = -1 * (float(lat[:2]) + float(lat[2:])/60)
 
                 # Longitude Longitude (DDDmm.mm) (E = East, W = West)
                 if lon_dir == 'E':
-                    gps_msg.lon = float(lon[:3]) + float(lon[3:])/60
+                    gps_msg.longitude = float(lon[:3]) + float(lon[3:])/60
                 elif lon_dir == 'W':
-                    gps_msg.lon = -1 * (float(lon[:3]) + float(lon[3:])/60)
+                    gps_msg.longitude = -1 * (float(lon[:3]) + float(lon[3:])/60)
 
                 # Header
                 header_msg = Header()
