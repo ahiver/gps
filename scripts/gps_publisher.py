@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import Header
 import serial
 from gps.msg import gps
-from sensor_msgs import NavSatFix
+from sensor_msgs.msg import NavSatFix
 import utm
 import os
 
