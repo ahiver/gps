@@ -71,7 +71,6 @@ def talker():
                 # Latitude (DDmm.mm) (N = North, S = South)
                 if lat_dir == 'N':
                     gps_msg.latitude = float(lat[:2]) + float(lat[2:])/60
-                    print(gps_msg.lat)
                 elif lat_dir == 'S':
                     gps_msg.latitude = -1 * (float(lat[:2]) + float(lat[2:])/60)
 
